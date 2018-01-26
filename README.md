@@ -15,15 +15,21 @@ You can deposit using api:
 ```
 http://localhost:3000/banking/deposit?account_no=<account_no>&amount=<amount>
 ```
+Returns the final closing balance
+
 
 You can withdraw using api:
 ```
 http://localhost:3000/banking/withdraw?account_no=<account_no>&amount=<amount>
 ```
+Returns the final closing balance
+
 
 You can get to know for current balance using api:
 ```
 http://localhost:3000/banking/enquiry?account_no=<account_no>
 ```
+Returns the final closing balance
 
-Note: You will be getting proper error message with status code 422 if you are making a wrong request
+Note:
+You will be getting proper error message with status code 422 if you are making a wrong request
