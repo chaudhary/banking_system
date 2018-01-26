@@ -1,0 +1,16 @@
+<div style="font-size: 13px;color: #000;">
+  <div>
+    Dear <%= @txn.bank_account.user_name %>
+  </div>
+
+  <div style="padding-top: 20px;">
+    Your account has been deposited with an amount of
+    <%= @txn.amount %>.
+    Your current balance is <%= @txn.bank_account.current_balance %>.
+  </div>
+
+  <div style="padding-top: 20px;">
+    With Regars,<br>
+    Team TestBank
+  </div>
+</div>

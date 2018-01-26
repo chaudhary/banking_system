@@ -3,8 +3,10 @@ class BankAccount
 
   MAX_LOCK_DURATION = 10.minutes
 
+  field :user_name, type: String
+  field :user_email, type: String
+
   field :account_no, type: String
-  field :name, type: String
   field :current_balance, type: Float
 
   field :locked_at, type: Time

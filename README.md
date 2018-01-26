@@ -6,9 +6,9 @@ AccountTxn.create_indexes
 
 Create few bank accounts from rails console:
 ```
-BankAccount.create(:account_no => "acc1")
-BankAccount.create(:account_no => "acc2")
-BankAccount.create(:account_no => "acc3")
+BankAccount.create(:account_no => "acc1", :user_name => "Account Holder 1", :user_email => "acc1@gmail.com")
+BankAccount.create(:account_no => "acc2", :user_name => "Account Holder 2", :user_email => "acc2@gmail.com")
+BankAccount.create(:account_no => "acc3", :user_name => "Account Holder 3", :user_email => "acc3@gmail.com")
 ```
 
 You can deposit using api:

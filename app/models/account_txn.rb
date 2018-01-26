@@ -21,4 +21,12 @@ class AccountTxn
   validates :bank_account_id, presence: true
 
   index({bank_account_id: 1}, {background: true})
+
+  after_save do |doc|
+    if doc.txn_type == DEPOSIT
+      ::AccountTxnMailer.amount_deposited_email(doc).deliver_now
+    else
+      ::AccountTxnMailer.amount_withdrawn_email(doc).deliver_now
+    end
+  end
 end
