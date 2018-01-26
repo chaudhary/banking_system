@@ -1,5 +1,8 @@
 class BankingController < ApplicationController
 
+  def index
+  end
+
   def deposit
     closing_balance = bank_account.deposit(params[:amount].to_f)
     render(json: {closing_balance: closing_balance}, status: 200)

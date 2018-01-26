@@ -1,24 +1,29 @@
-# README
+Create db indexes from rails console:
+```
+BankAccount.create_indexes
+AccountTxn.create_indexes
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Create few bank accounts from rails console:
+```
+BankAccount.create(:account_no => "acc1")
+BankAccount.create(:account_no => "acc2")
+BankAccount.create(:account_no => "acc3")
+```
 
-Things you may want to cover:
+You can deposit using api:
+```
+http://localhost:3000/banking/deposit?account_no=<account_no>&amount=<amount>
+```
 
-* Ruby version
+You can withdraw using api:
+```
+http://localhost:3000/banking/withdraw?account_no=<account_no>&amount=<amount>
+```
 
-* System dependencies
+You can get to know for current balance using api:
+```
+http://localhost:3000/banking/enquiry?account_no=<account_no>
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Note: You will be getting proper error message with status code 422 if you are making a wrong request

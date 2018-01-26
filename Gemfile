@@ -10,6 +10,10 @@ end
 gem 'rails', '~> 5.1.4'
 
 gem 'mongoid'
+gem 'bson_ext'
+gem 'mongo'
+gem 'mongo_session_store-rails5'
+gem 'mongoid_rails_migrations'
 
 
 # Use Puma as the app server
