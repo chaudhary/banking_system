@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'banking/deposit' => 'banking#deposit'
   get 'banking/withdraw' => 'banking#withdraw'
 
+  get 'banking/download' => 'banking#download_txns_history'
+
 end

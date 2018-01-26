@@ -31,5 +31,15 @@ http://localhost:3000/banking/enquiry?account_no=<account_no>
 ```
 Returns the final closing balance
 
+
+You can download the csv for txns history using the api:
+```
+http://localhost:3000/banking/download?account_no=<account_no>&from=<from_date>&to=<to_date>
+```
+All the parameters in the above api are optional.
+from_date and to_date should be in dd/mm/yyyy format.
+
+
 Note:
 You will be getting proper error message with status code 422 if you are making a wrong request
+I have not considered any authentication mechanism here.

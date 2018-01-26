@@ -18,6 +18,28 @@ class BankingController < ApplicationController
   end
 
   def download_txns_history
+    if params[:account_no].present?
+      bank_account = ::BankAccount.where(:account_no => params[:account_no]).first
+      raise ::AppException.new("Wrong account no provided") if bank_account.blank?
+    end
+
+    txns = AccountTxn.all
+    txns = txns.where(:bank_account_id => bank_account.id) if bank_account.present?
+    txns = txns.where(:txn_time.gte => Time.parse(params[:from])) if params[:from].present?
+    txns = txns.where(:txn_time.lte => Time.parse(params[:to])) if params[:to].present?
+    txns = txns.order_by(:txn_time => :asc)
+
+    csv_export = CsvExport.new('txns_history')
+    txns.each do |txn|
+      csv_export.export_data({
+        "Txn Date" => txn.txn_time.strftime("%d/%m/%Y"),
+        "Txn Type" => txn.txn_type,
+        "Amount" => txn.amount,
+        "Closing Balance" => txn.closing_balance
+      })
+    end
+    filepath = csv_export.build
+    send_file(filepath, :type => 'text/csv; charset=iso-8859-1; header=present', :disposition => "attachment;data=txns_history.csv")
   end
 
   private
